@@ -20,9 +20,9 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "cross-env HOST=0.0.0.0 PORT=8000 ./node_modules/.bin/react-scripts start",
+    "test": "cross-env CI=true ./node_modules/.bin/react-scripts test --verbose --testResultsProcessor ./node_modules/jest-junit",
     "test:watch": "react-scripts test --watch",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.ts{,x}",
@@ -47,6 +47,12 @@
     ]
   },
   "devDependencies": {
+
+    "cross-env": "^7.0.2",
+    "expect": "^26.1.0",
+    "jest-junit": "^11.1.0",
+    "node-fetch": "^2.6.1",
+    "react-test-renderer": "^16.13.1",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
     "autoprefixer": "^10.4.0",
@@ -62,8 +68,5 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1"
-  },
-  "msw": {
-    "workerDirectory": "public"
   }
 }

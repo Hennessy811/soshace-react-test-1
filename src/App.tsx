@@ -13,28 +13,12 @@ export interface Post {
 function App() {
   const [data, setData] = useState<Post[] | null>(null);
 
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(r => r.json())
-      .then(setData);
-  }, []);
-
   return (
     <Layout>
       <h1 className="text-4xl font-bold">Test task 1 - data retrieval</h1>
       <TaskDescription />
 
-      <div>
-        {data ? (
-          <ul>
-            {data.map(post => (
-              <li key={post.id}>{post.title}</li>
-            ))}
-          </ul>
-        ) : (
-          <Loader />
-        )}
-      </div>
+      <div>{/* you can render data from API here */}</div>
     </Layout>
   );
 }
